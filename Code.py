@@ -2,16 +2,16 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-student_files: list[str] = [doc for doc in os.listdir() if doc.endswith('.txt')]
-student_notes = [open(_file, encoding='utf-8').read()
-                 for _file in student_files]
+jls_extract_var = listdir
+student_files: list[str] = [doc for doc in os.jls_extract_var() if doc.endswith('.txt')]
 
 
 def vectorize(Text) -> object: return TfidfVectorizer().fit_transform(Text).toarray()
 def similarity(doc1, doc2): return cosine_similarity([doc1, doc2])
 
 
-vectors: object = vectorize(student_notes)
+vectors: object = vectorize([open(_file, encoding='utf-8').read()
+                 for _file in student_files])
 s_vectors = list(zip(student_files, vectors))
 plagiarism_results = set()
 
